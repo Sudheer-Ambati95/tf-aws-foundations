@@ -33,3 +33,11 @@ output "private_db_subnet_1_id" {
 output "private_db_subnet_2_id" {
   value = aws_subnet.private_db_2.id
 }
+
+output "nat_gateway_id" {
+  value = aws_nat_gateway.main.id
+}
+
+output "private_route_table_id" {
+  value = aws_route_table.private.id
+}

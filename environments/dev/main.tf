@@ -15,3 +15,32 @@ module "vpc" {
   private_db_subnet_1_cidr = "10.0.21.0/24"
   private_db_subnet_2_cidr = "10.0.22.0/24"
 }
+
+module "security_group" {
+
+  source = "../../modules/security-group"
+
+  environment = "dev"
+
+  vpc_id = module.vpc.vpc_id
+}
+
+module "monitoring" {
+
+  source = "../../modules/monitoring"
+
+  environment = "dev"
+
+  vpc_id = module.vpc.vpc_id
+}
+
+module "ec2" {
+
+  source = "../../modules/ec2"
+
+  environment = "dev"
+
+  private_subnet_id = module.vpc.private_app_subnet_1_id
+
+  app_security_group_id = module.security_group.app_sg_id
+}
