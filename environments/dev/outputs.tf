@@ -78,4 +78,7 @@ output "launch_template_id" {
   value = module.ec2.launch_template_id
 }
 
+output "cloudwatch_agent_parameter" {
+  value = module.monitoring.cloudwatch_agent_parameter
+}
 
