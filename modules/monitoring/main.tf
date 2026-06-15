@@ -62,3 +62,14 @@ resource "aws_flow_log" "vpc" {
 
   vpc_id = var.vpc_id
 }
+
+resource "aws_ssm_parameter" "cloudwatch_agent_config" {
+  name = "/${var.environment}/cloudwatch-agent/config"
+  type = "String"
+
+  value = file("${path.module}/cloudwatch-agent.json")
+
+  tags = {
+    Name = "${var.environment}-cloudwatch-agent-config"
+  }
+}

@@ -32,6 +32,8 @@ module "monitoring" {
   environment = "dev"
 
   vpc_id = module.vpc.vpc_id
+
+  instance_id = module.ec2.instance_id
 }
 
 module "ec2" {
