@@ -46,3 +46,12 @@ module "ec2" {
 
   app_security_group_id = module.security_group.app_sg_id
 }
+
+module "backup" {
+  source = "../../modules/backup"
+
+  environment = "dev"
+
+  instance_arn = module.ec2.instance_arn
+}
+

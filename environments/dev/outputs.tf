@@ -82,3 +82,11 @@ output "cloudwatch_agent_parameter" {
   value = module.monitoring.cloudwatch_agent_parameter
 }
 
+output "backup_vault_name" {
+  value = module.backup.backup_vault_name
+}
+
+output "backup_plan_id" {
+  value = module.backup.backup_plan_id
+}
+
