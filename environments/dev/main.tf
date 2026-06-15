@@ -47,6 +47,22 @@ module "ec2" {
   app_security_group_id = module.security_group.app_sg_id
 }
 
+module "alb" {
+  source = "../../modules/alb"
+
+  environment = "dev"
+
+  vpc_id = module.vpc.vpc_id
+
+  public_subnet_ids = [
+    module.vpc.public_subnet_1_id,
+    module.vpc.public_subnet_2_id
+  ]
+
+  alb_sg_id   = module.security_group.alb_sg_id
+  instance_id = module.ec2.instance_id
+}
+
 module "backup" {
   source = "../../modules/backup"
 

@@ -13,3 +13,8 @@ output "instance_id" {
 output "launch_template_id" {
   value = aws_launch_template.app.id
 }
+
+output "instance_arn" {
+  value = aws_instance.app.arn
+}
+
